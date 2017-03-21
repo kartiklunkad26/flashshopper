@@ -1,13 +1,13 @@
 package io.pivotal;
 
-/**
- * Created by pivotal on 3/15/17.
- */
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+/**
+ * Created by pivotal on 3/20/17.
+ */
+
 @RepositoryRestResource
-interface ItemRepo extends CrudRepository<Item, Long> {
+public interface WishlistItemRepo extends CrudRepository<WishlistItem, Long> {
 
 }

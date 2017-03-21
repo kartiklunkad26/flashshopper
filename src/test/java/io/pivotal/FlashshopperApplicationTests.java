@@ -2,7 +2,9 @@ package io.pivotal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.contract.stubrunner.StubTrigger;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -12,6 +14,19 @@ public class FlashshopperApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
+
+	@Autowired
+	StubTrigger stubTrigger;
+
+//	@Test
+//	public void testWithV2StubData() {
+//		int initialSize = this.githubDataListener.stats.get();
+//
+//		this.stubTrigger.trigger("issue_created_v2");
+//
+//		then(this.githubDataListener.counter).isNotEmpty();
+//		then(this.githubDataListener.stats.get()).isGreaterThan(initialSize);
+//	}
 
 	/**
 	 *  API v1

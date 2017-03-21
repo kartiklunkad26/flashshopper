@@ -1,30 +1,42 @@
 package io.pivotal;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.boot.CommandLineRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class FlashshopperApplication {
 
-	@Autowired
-	ItemRepo itemRepo;
+    @Autowired
+    WishlistItemRepo wishlistItemRepo;
 
-	@Bean
-	CommandLineRunner commandLineRunner(){
-		return args->{
-			itemRepo.save(new Item("Beyonce", 5));
-			itemRepo.save(new Item("Beyonx", 5));
-			itemRepo.save(new Item("Beyonce", 50));
+    public static void main(String[] args) {
+        SpringApplication.run(FlashshopperApplication.class, args);
+    }
 
-			itemRepo.findAll().forEach(System.out::println);
-		};
-	}
+    @Bean
+    CommandLineRunner commandLineRunner() {
+        return args -> {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FlashshopperApplication.class, args);
-	}
+            wishlistItemRepo.save(new WishlistItem("Beyonce", 50, 70));
+            wishlistItemRepo.save(new WishlistItem("Adele", 40, 50));
+
+            System.out.println("WISHLIST:");
+            wishlistItemRepo.findAll().forEach(System.out::println);
+
+
+            Tickets tickets = new Tickets("Beyonce", 50, 125);
+
+            System.out.println("AVAILABLE TICKETS:");
+            System.out.println(tickets.toString());
+
+           };
+    }
+
 }
 
